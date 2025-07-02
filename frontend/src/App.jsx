@@ -4,6 +4,8 @@ import Monsters from './pages/Monsters';
 import Home from './pages/Home';
 import Battles from './pages/Battles';
 import StartBattle from './pages/StartBattle';
+import SimulateBattle from './pages/SimulateBattle';
+
 
 export default function App() {
   return (
@@ -14,6 +16,7 @@ export default function App() {
         <Route path="/monsters" element={<Monsters />} />
         <Route path="/battles" element={<Battles />} />
         <Route path="/start-battle" element={<StartBattle />} />
+        <Route path="/battle/:id" element={<SimulateBattle />} />
       </Routes>
     </Router>
   );
