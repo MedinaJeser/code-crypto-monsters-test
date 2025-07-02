@@ -16,7 +16,8 @@ export class MonstersService {
     }
 
     async findAll() {
-        return this.monsterModel.find().exec();
+        const monstersEnabled = await this.monsterModel.find({ isEnabled: true }).exec();
+        return monstersEnabled;        
     }
 
     async findOne(id: string) {

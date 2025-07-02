@@ -31,6 +31,9 @@ export class Battle {
     @Prop({ type: Types.ObjectId, ref: 'Monster' })
     winner: Types.ObjectId;
 
+    @Prop({ default: Date.now })
+    createdAt: Date;
+
     @Prop({ type: [BattleTurnSchema], default: [] })
     battleTurns: BattleTurn[];
 }

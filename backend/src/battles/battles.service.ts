@@ -78,10 +78,9 @@ export class BattlesService {
 
     async findAllBattles() {
         const battles = await this.battleModel.find()
+            .select('-battleTurns')
             .populate('monsters')
             .populate('winner')
-            .populate('battleTurns.attacker')
-            .populate('battleTurns.defender')
             .lean();
 
         return battles;
