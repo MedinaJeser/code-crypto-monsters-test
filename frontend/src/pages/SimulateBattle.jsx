@@ -9,6 +9,7 @@ const SimulateBattle = () => {
     const [battle, setBattle] = useState(null);
     const [turnIndex, setTurnIndex] = useState(0);
     const [currentHps, setCurrentHps] = useState([]);
+    const [error, setError] = useState(null);
 
     const fetchData = async () => {
         try {
@@ -33,6 +34,7 @@ const SimulateBattle = () => {
             setCurrentHps(healthPoints);
         } catch (error) {
             console.error("Error loading battle:", error);
+            setError("Hubo un error al cargar la batalla o no existe.");
         }
     };
 
@@ -57,6 +59,7 @@ const SimulateBattle = () => {
         fetchData();
     }, []);
 
+    if (error) return <p className="p-6 text-red-600">Error: {error}</p>;
     if (!battle || monsters.length === 0) return <p className="p-6">Cargando batalla...</p>;
 
     const currentTurn = battle.battleTurns[turnIndex];
